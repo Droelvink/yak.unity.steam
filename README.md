@@ -1,1 +1,2 @@
-# yak.unity.steam
+# Unity steam package
+Provides the following scripts:
