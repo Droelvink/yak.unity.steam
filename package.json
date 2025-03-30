@@ -1,6 +1,6 @@
 {
     "name": "com.yak.steam",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "Yak Steam",
     "description": "Adds Steam setup classes to your unity project!",
     "unity": "2019.1",

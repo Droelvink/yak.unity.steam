@@ -49,7 +49,11 @@ namespace com.yak.steam
             }
             
             SetInitializedState(SteamAPI.Init());
-            if(SteamAPI.Init()) Debug.Log("[com.yak.steam] Steam initialization was successful.");
+            if (SteamAPI.Init())
+            {
+                Debug.Log("[com.yak.steam] Steam initialization was successful.");
+                Steam.OnInitialized?.Invoke();
+            }
             else Debug.LogError("[com.yak.steam] Steam initialization failed.");
         }
         

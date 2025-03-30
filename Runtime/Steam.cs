@@ -1,4 +1,5 @@
 using com.yak.singleton;
+using UnityEngine.Events;
 
 namespace com.yak.steam
 {
@@ -11,5 +12,7 @@ namespace com.yak.steam
         public static Profiles Profiles { get; private set; }  = new Profiles();
         public static Overlay Overlay { get; private set; } = new Overlay();
         public static Lobby Lobby { get; private set; } = new Lobby();
+
+        public static UnityEvent OnInitialized { get; private set; } = new UnityEvent();
     }
 }
