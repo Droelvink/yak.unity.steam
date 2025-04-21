@@ -172,6 +172,7 @@ namespace com.yak.steam
         
         public void Dispose()
         {
+            if(InLobby()) Leave();
             _lobbyCreatedCallback?.Dispose();
             _lobbyEnterCallback?.Dispose();
             _lobbyChatMsgCallback?.Dispose();
