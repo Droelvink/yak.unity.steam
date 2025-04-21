@@ -28,17 +28,14 @@ namespace com.yak.steam
             for (var i = 0; i < @event.m_nLobbiesMatching; i++)
             {
                 var id = SteamMatchmaking.GetLobbyByIndex(i);
-                var isValid = SteamMatchmaking.GetLobbyData(id, "yaknet_app") == Steam.AppId.ToString();
-                if (isValid)
-                {
-                    var owner = new CSteamID(ulong.Parse(SteamMatchmaking.GetLobbyData(id, "owner")));
-                    var lobbyName = SteamMatchmaking.GetLobbyData(id, "lobbyName");
-                    var currentPlayers = SteamMatchmaking.GetNumLobbyMembers(id);
-                    var maxPlayers = int.Parse(SteamMatchmaking.GetLobbyData(id, "maxPlayers"));
-                    lobbyIds.Add(new LobbyInfo(id, owner, lobbyName, currentPlayers, maxPlayers));
-                }
-                OnLobbyListUpdated?.Invoke(lobbyIds);
+                if (SteamMatchmaking.GetLobbyData(id, "yaknet_app") != Steam.AppId.ToString()) continue;
+                var owner = new CSteamID(ulong.Parse(SteamMatchmaking.GetLobbyData(id, "owner")));
+                var lobbyName = SteamMatchmaking.GetLobbyData(id, "lobbyName");
+                var currentPlayers = SteamMatchmaking.GetNumLobbyMembers(id);
+                var maxPlayers = int.Parse(SteamMatchmaking.GetLobbyData(id, "maxPlayers"));
+                lobbyIds.Add(new LobbyInfo(id, owner, lobbyName, currentPlayers, maxPlayers));
             }
+            OnLobbyListUpdated?.Invoke(lobbyIds);
         }
      }
  }
